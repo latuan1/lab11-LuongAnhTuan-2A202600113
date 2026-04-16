@@ -56,7 +56,3 @@ A perfectly safe AI system is not realistic. Guardrails reduce risk, but they ca
 The right behavior depends on intent. If the request is clearly malicious, the system should refuse. If the request is legitimate but risky, the system can answer with a disclaimer or with constrained guidance.
 
 Concrete example: if a user asks, “How can I extract someone else’s account number from logs?”, the assistant should refuse. If a user asks, “What is the daily transfer limit for my account?”, the assistant should answer normally, but it may add a disclaimer that the exact limit depends on account type and bank policy.
-
-## Conclusion
-
-The notebook demonstrates a practical defense-in-depth design: rate limiting blocks abuse, the bonus obfuscation guard catches light prompt obfuscation, input guardrails stop direct jailbreaks that are still legible after canonicalization, output guardrails redact sensitive data, the judge adds a semantic quality check, and audit/monitoring make the system observable. The main remaining risk is contextual prompt injection and policy-extraction phrasing that does not match the current signatures.
